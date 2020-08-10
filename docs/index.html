@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>mapbox-gl-draw-waypoint</title>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css" rel="stylesheet">
+  <!-- <script src="https://unpkg.com/mapbox-gl-draw-waypoint@1.0.0/dist/mapbox-gl-draw-waypoint.js"></script> -->
+  <script src="../dist/mapbox-gl-draw-waypoint.js"></script>
+  <style>
+    body {
+      margin: 0;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const map = new mapboxgl.Map({
+    container: 'map',
+    accessToken: 'pk.eyJ1IjoiemFramFuIiwiYSI6ImNrY3hsbTNrMzAxNngyc21taGo2YXB3M3cifQ.hvUlhIPJVk6swK0Y4UJwwQ', // GitHub Pages token
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [30, 0],
+    zoom: 0,
+  });
+  map.setCenter([0, 0]);
+
+  let modes = MapboxDraw.modes;
+  modes = MapboxDrawWaypoint.enable(modes, feature => feature.properties.risk);
+  const draw = new MapboxDraw({ modes });
+  map.addControl(draw, 'top-left');
+
+  map.on('load', () => {
+    // labels
+    map.addSource('labels', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: {
+              label: 'Waypoint editing'
+            },
+            geometry: {
+              type: 'Point',
+              coordinates: [0, 50]
+            }
+          },
+          {
+            type: 'Feature',
+            properties: {
+              label: 'Original editing'
+            },
+            geometry: {
+              type: 'Point',
+              coordinates: [180 + 0, 50]
+            }
+          }
+        ]
+      }
+    });
+    map.addLayer({
+      id: 'labels',
+      source: 'labels',
+      type: 'symbol',
+      layout: {
+        'text-field': ['get', 'label'],
+        'text-anchor': 'bottom',
+        'text-offset': [0, -2]
+      },
+      paint: {
+        'text-halo-color': '#ffffff',
+        'text-halo-width': 2
+      }
+    });
+
+    // test features - waypoint editing
+    draw.add({
+      type: 'Feature',
+      properties: {
+        risk: true
+      },
+      geometry: {
+        type: 'LineString',
+        coordinates: [[-40, 37.5], [40, 37.5], [40, 30], [-40, -30], [-40, -37.5], [40, -37.5]]
+      }
+    });
+    draw.add({
+      type: 'Feature',
+      properties: {
+        risk: true
+      },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[-40, 20], [40, 20], [40, -20], [-40, -20], [-40, 20]]]
+      }
+    });
+    draw.add({
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'Point',
+        coordinates: [0, 50]
+      }
+    });
+
+    // test features - original editing
+    draw.add({
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'LineString',
+        coordinates: [[180 + -40, 37.5], [180 + 40, 37.5], [180 + 40, 30], [180 + -40, -30], [180 + -40, -37.5], [180 + 40, -37.5]]
+      }
+    });
+    draw.add({
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[[180 + -40, 20], [180 + 40, 20], [180 + 40, -20], [180 + -40, -20], [180 + -40, 20]]]
+      }
+    });
+    draw.add({
+      type: 'Feature',
+      properties: {},
+      geometry: {
+        type: 'Point',
+        coordinates: [180 + 0, 50]
+      }
+    });
+  });
+
+  map.on('draw.modechange', (event) => {
+    console.log('modechange', event.mode);
+  });
+});
+</script>
+</body>
+</html>

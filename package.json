@@ -1,0 +1,38 @@
+{
+  "name": "mapbox-gl-draw-waypoint",
+  "version": "1.0.0",
+  "description": "Waypoint plugin for MapboxDraw",
+  "keywords": [
+    "mapbox",
+    "mapbox-gl-js",
+    "mapbox-gl-draw"
+  ],
+  "author": "Jan Zak <zj@zakjan.cz>",
+  "license": "MIT",
+  "repository": "github:zakjan/mapbox-gl-draw-waypoint",
+  "main": "src/index.js",
+  "browser": "dist/mapbox-gl-draw-waypoint.min.js",
+  "scripts": {
+    "build": "rimraf dist && rollup -c",
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/runtime": "^7.11.2",
+    "@mapbox/mapbox-gl-draw": "^1.2.0",
+    "@rollup/plugin-babel": "^5.1.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.22.2",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-visualizer": "^4.0.4"
+  },
+  "peerDependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.2.0"
+  }
+}
