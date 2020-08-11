@@ -43,7 +43,7 @@ modes = MapboxDrawWaypoint.enable(modes);
 const draw = new MapboxDraw({ modes });
 ```
 
-The second argument to `MapboxDrawWaypoint.enable` is a function to control which features can be dragged (defaults to all).
+The second argument to `MapboxDrawWaypoint.enable` is a function to select features which should have the plugin enabled (defaults to all).
 
 ```
 modes = MapboxDrawWaypoint.enable(modes, feature => feature.properties.risk);
