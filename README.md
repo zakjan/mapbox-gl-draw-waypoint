@@ -4,7 +4,7 @@
 [![](https://img.shields.io/david/zakjan/mapbox-gl-draw-waypoint)](https://www.npmjs.com/package/mapbox-gl-draw-waypoint)
 [![](https://img.shields.io/bundlephobia/min/mapbox-gl-draw-waypoint)](https://www.npmjs.com/package/mapbox-gl-draw-waypoint)
 
-Waypoint plugin for MapboxDraw. It allows to drag vertices only, prevents to drag entire features.
+Waypoint plugin for MapboxDraw. It allows user to drag vertices only, prevents dragging features.
 
 [Demo](https://zakjan.github.io/mapbox-gl-draw-waypoint/)
 
