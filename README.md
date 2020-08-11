@@ -60,7 +60,6 @@ let modes = MapboxDraw.modes;
 modes = MapboxDrawGeodesic.enable(modes);
 modes = MapboxDrawWaypoint.enable(modes);
 const draw = new MapboxDraw({ modes });
-});
 ```
 
 ## Sponsors
