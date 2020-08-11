@@ -1,6 +1,6 @@
 import * as Constants from '../constants';
 
-function patchSimpleSelect(SimpleSelect, preventFunction) {
+function patchSimpleSelect(SimpleSelect) {
   const SimpleSelectPatched = { ...SimpleSelect };
 
   SimpleSelectPatched.clickOnFeature = function(state, e) {
