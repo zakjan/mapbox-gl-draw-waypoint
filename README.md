@@ -49,6 +49,20 @@ The second argument to `MapboxDrawWaypoint.enable` is a function to select featu
 modes = MapboxDrawWaypoint.enable(modes, feature => feature.properties.risk);
 ```
 
+The patching method is compatible with [mapbox-gl-draw-geodesic](https://github.com/zakjan/mapbox-gl-draw-geodesic), both patches can be used together.
+
+```
+import MapboxDraw from 'mapbox-gl-draw';
+import MapboxDrawGeodesic from 'mapbox-gl-draw-geodesic';
+import MapboxDrawWaypoint from 'mapbox-gl-draw-waypoint';
+
+let modes = MapboxDraw.modes;
+modes = MapboxDrawGeodesic.enable(modes);
+modes = MapboxDrawWaypoint.enable(modes);
+const draw = new MapboxDraw({ modes });
+});
+```
+
 ## Sponsors
 
 <a href="https://maritrace.com/"><img src="docs/maritrace.png" alt="MariTrace" width="370" height="84"></a>
