@@ -4,7 +4,7 @@
 [![](https://img.shields.io/david/zakjan/mapbox-gl-draw-waypoint)](https://www.npmjs.com/package/mapbox-gl-draw-waypoint)
 [![](https://img.shields.io/bundlephobia/min/mapbox-gl-draw-waypoint)](https://www.npmjs.com/package/mapbox-gl-draw-waypoint)
 
-Waypoint plugin for MapboxDraw. It allows user to drag vertices only, prevents dragging features.
+Waypoint plugin for MapboxDraw. It allows user to drag vertices only, prevents dragging features. Also, it merges UX of simple_select and direct_select modes togeether, to save mouse clicks when switching between them.
 
 [Demo](https://zakjan.github.io/mapbox-gl-draw-waypoint/)
 
@@ -13,10 +13,11 @@ Waypoint plugin for MapboxDraw. It allows user to drag vertices only, prevents d
 Supported MapboxDraw modes:
 
 - simple_select
-  - selecting a polygon or line switches to direct_select mode, to save one click when switching from simple_select to direct_select mode
+  - clicking an inactive polygon/line feature switches to direct_select mode, saves one mouse click
   - multi-selection is prevented for consistency with direct_select mode
 - direct_select
-  - dragging a polygon or a line is prevented
+  - clicking an inactive feature selects it (point feature in simple_select mode, polygon/line feature in direct_select mode), saves one mouse click
+  - dragging a polygon/line feature is prevented
 
 ## Install
 
