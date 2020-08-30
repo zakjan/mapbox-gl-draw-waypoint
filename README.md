@@ -37,7 +37,7 @@ This plugin exposes a single function `enable`, which should be used to patch th
 
 ```
 import MapboxDraw from 'mapbox-gl-draw';
-import MapboxDrawWaypoint from 'mapbox-gl-draw-waypoint';
+import * as MapboxDrawWaypoint from 'mapbox-gl-draw-waypoint';
 
 let modes = MapboxDraw.modes;
 modes = MapboxDrawWaypoint.enable(modes);
@@ -54,8 +54,8 @@ The patching method is compatible with [mapbox-gl-draw-geodesic](https://github.
 
 ```
 import MapboxDraw from 'mapbox-gl-draw';
-import MapboxDrawGeodesic from 'mapbox-gl-draw-geodesic';
-import MapboxDrawWaypoint from 'mapbox-gl-draw-waypoint';
+import * as MapboxDrawGeodesic from 'mapbox-gl-draw-geodesic';
+import * as MapboxDrawWaypoint from 'mapbox-gl-draw-waypoint';
 
 let modes = MapboxDraw.modes;
 modes = MapboxDrawGeodesic.enable(modes);
