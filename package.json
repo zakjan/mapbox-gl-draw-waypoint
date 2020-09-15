@@ -1,10 +1,9 @@
 {
   "name": "mapbox-gl-draw-waypoint",
   "version": "1.0.2",
-  "description": "Waypoint plugin for MapboxDraw",
+  "description": "Waypoint plugin for Mapbox GL Draw",
   "keywords": [
-    "mapbox",
-    "mapbox-gl-js",
+    "mapbox-gl",
     "mapbox-gl-draw"
   ],
   "author": "Jan Zak <zj@zakjan.cz>",
