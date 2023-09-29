@@ -1,6 +1,6 @@
-import * as Constants from '../constants';
-import patchSimpleSelect from './simple_select';
-import patchDirectSelect from './direct_select';
+import * as Constants from '../constants.js';
+import patchSimpleSelect from './simple_select.js';
+import patchDirectSelect from './direct_select.js';
 
 export function enable(modes, preventFunction = () => true) {
   return {

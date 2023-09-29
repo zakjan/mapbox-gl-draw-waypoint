@@ -1,6 +1,6 @@
 
-import { isInactiveFeature, isOfMetaType } from '@mapbox/mapbox-gl-draw/src/lib/common_selectors';
-import * as Constants from '../constants';
+import { isInactiveFeature, isOfMetaType } from '@mapbox/mapbox-gl-draw/src/lib/common_selectors.js';
+import * as Constants from '../constants.js';
 
 function patchDirectSelect(DirectSelect, preventFunction = () => true) {
   const DirectSelectPatched = { ...DirectSelect };

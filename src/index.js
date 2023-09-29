@@ -1,1 +1,1 @@
-export * from './modes/index';
+export * from './modes/index.js';

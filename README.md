@@ -28,7 +28,7 @@ npm install mapbox-gl-draw-waypoint
 or
 
 ```
-<script src="https://unpkg.com/mapbox-gl-draw-waypoint@1.0.3/dist/mapbox-gl-draw-waypoint.min.js"></script>
+<script src="https://unpkg.com/mapbox-gl-draw-waypoint@1.0.3/dist/mapbox-gl-draw-waypoint.umd.min.js"></script>
 ```
 
 ## Usage

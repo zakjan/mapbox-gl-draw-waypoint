@@ -9,8 +9,10 @@
   "author": "Jan Zak <zj@zakjan.cz>",
   "license": "MIT",
   "repository": "github:zakjan/mapbox-gl-draw-waypoint",
-  "main": "src/index.js",
-  "browser": "dist/mapbox-gl-draw-waypoint.min.js",
+  "type": "module",
+  "main": "dist/mapbox-gl-draw-waypoint.cjs.js",
+  "module": "dist/mapbox-gl-draw-waypoint.esm.js",
+  "browser": "dist/mapbox-gl-draw-waypoint.umd.min.js",
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",

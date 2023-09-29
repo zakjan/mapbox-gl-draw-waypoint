@@ -1,16 +1,16 @@
-import pkg from './package.json';
+import pkg from './package.json' assert { type: 'json' };
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-function bundle(filename, options = {}) {
+function bundle(format, filename, options = {}) {
   return {
     input: 'src/index.js',
     output: {
       file: filename,
-      format: 'umd',
+      format: format,
       name: 'MapboxDrawWaypoint',
       sourcemap: true,
       globals: {
@@ -19,6 +19,10 @@ function bundle(filename, options = {}) {
     },
     external: [
       ...Object.keys(pkg.peerDependencies),
+      ...(!options.resolve ? [
+        '@mapbox/mapbox-gl-draw/src/constants.js',
+        '@mapbox/mapbox-gl-draw/src/lib/common_selectors.js',
+      ] : []),
       'fs',
       'path',
     ],
@@ -35,6 +39,8 @@ function bundle(filename, options = {}) {
 }
 
 export default [
-  bundle(pkg.browser.replace('.min', ''), { stats: true }),
-  bundle(pkg.browser, { minimize: true }),
+  bundle('cjs', pkg.main),
+  bundle('es', pkg.module),
+  bundle('umd', pkg.browser.replace('.min', ''), { resolve: true, stats: true }),
+  bundle('umd', pkg.browser, { resolve: true, minimize: true }),
 ];
