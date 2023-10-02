@@ -10,9 +10,16 @@
   "license": "MIT",
   "repository": "github:zakjan/mapbox-gl-draw-waypoint",
   "type": "module",
-  "main": "dist/mapbox-gl-draw-waypoint.cjs.js",
-  "module": "dist/mapbox-gl-draw-waypoint.esm.js",
-  "browser": "dist/mapbox-gl-draw-waypoint.umd.min.js",
+  "exports": {
+    ".": {
+      "require": "./dist/mapbox-gl-draw-waypoint.cjs.js",
+      "import": "./dist/mapbox-gl-draw-waypoint.esm.js",
+      "script": "./dist/mapbox-gl-draw-waypoint.umd.min.js"
+    }
+  },
+  "main": "./dist/mapbox-gl-draw-waypoint.cjs.js",
+  "module": "./dist/mapbox-gl-draw-waypoint.esm.js",
+  "browser": "./dist/mapbox-gl-draw-waypoint.umd.min.js",
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -c -w",
