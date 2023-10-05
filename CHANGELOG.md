@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- bundle mapbox-gl-draw 1.3.0 sources
+
 ## 1.1.1
 
 - add .npmignore to keep dist in the published package
