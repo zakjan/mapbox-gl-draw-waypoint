@@ -21,7 +21,7 @@ function bundle(format, filename, options = {}) {
       ...Object.keys(pkg.peerDependencies),
     ],
     plugins: [
-      resolve(),
+      ...(options.resolve ? [resolve()] : [resolve({ resolveOnly: ['@mapbox/mapbox-gl-draw'] })]),
       commonjs(),
       babel({ babelHelpers: 'runtime' }),
       options.minimize ? terser() : false,
