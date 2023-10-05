@@ -19,12 +19,6 @@ function bundle(format, filename, options = {}) {
     },
     external: [
       ...Object.keys(pkg.peerDependencies),
-      ...(!options.resolve ? [
-        '@mapbox/mapbox-gl-draw/src/constants.js',
-        '@mapbox/mapbox-gl-draw/src/lib/common_selectors.js',
-      ] : []),
-      'fs',
-      'path',
     ],
     plugins: [
       resolve(),
