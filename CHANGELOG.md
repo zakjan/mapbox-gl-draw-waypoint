@@ -1,5 +1,7 @@
 # Changelog
 
+- update peerDependencies
+
 ## 1.2.0
 
 - update to mapbox-gl-draw 1.4.3
