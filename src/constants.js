@@ -1,1 +1,3 @@
-export { cursors, geojsonTypes, modes, meta } from '@mapbox/mapbox-gl-draw/src/constants.js';
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
+
+export const { cursors, geojsonTypes, modes, meta } = MapboxDraw.constants;

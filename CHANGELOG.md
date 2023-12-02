@@ -1,5 +1,7 @@
 # Changelog
 
+- update to mapbox-gl-draw 1.4.3
+
 ## 1.1.3
 
 - bundle mapbox-gl-draw 1.3.0 sources - use resolveOnly

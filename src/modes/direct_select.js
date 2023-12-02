@@ -1,5 +1,5 @@
 
-import { isInactiveFeature, isOfMetaType } from '@mapbox/mapbox-gl-draw/src/lib/common_selectors.js';
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import * as Constants from '../constants.js';
 
 function patchDirectSelect(DirectSelect, preventFunction = () => true) {
@@ -37,9 +37,9 @@ function patchDirectSelect(DirectSelect, preventFunction = () => true) {
     const geojson = state.feature.toGeoJSON();
     if (preventFunction(geojson)) {
       // show pointer cursor on inactive features, move cursor on active feature vertices
-      const isFeature = isInactiveFeature(e);
-      const onVertex = isOfMetaType(Constants.meta.VERTEX)(e);
-      const onMidpoint = isOfMetaType(Constants.meta.MIDPOINT)(e);
+      const isFeature = MapboxDraw.lib.CommonSelectors.isInactiveFeature(e);
+      const onVertex = MapboxDraw.lib.CommonSelectors.isOfMetaType(Constants.meta.VERTEX)(e);
+      const onMidpoint = MapboxDraw.lib.CommonSelectors.isOfMetaType(Constants.meta.MIDPOINT)(e);
       if (isFeature || onMidpoint) this.updateUIClasses({ mouse: Constants.cursors.POINTER });
       else if (onVertex) this.updateUIClasses({ mouse: Constants.cursors.MOVE });
       else this.updateUIClasses({ mouse: Constants.cursors.NONE });
