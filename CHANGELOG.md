@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.2.1
+
 - update peerDependencies
 
 ## 1.2.0
