@@ -36,8 +36,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "rimraf": "^5.0.5",
-    "rollup": "^4.6.1",
-    "rollup-plugin-visualizer": "^5.9.3"
+    "rollup": "^4.7.0",
+    "rollup-plugin-visualizer": "^5.10.0"
   },
   "peerDependencies": {
     "@mapbox/mapbox-gl-draw": "^1.4.3"
