@@ -2,7 +2,7 @@
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import * as Constants from '../constants.js';
 
-function patchDirectSelect(DirectSelect, preventFunction = () => true) {
+function patchDirectSelect(DirectSelect, preventFunction = () => true, onPreventDragging = () => undefined) {
   const DirectSelectPatched = { ...DirectSelect };
 
   DirectSelectPatched.clickInactive = function(state, e) {
@@ -21,7 +21,8 @@ function patchDirectSelect(DirectSelect, preventFunction = () => true) {
 
   DirectSelectPatched.dragFeature = function(state, e, delta) {
     const geojson = state.feature.toGeoJSON();
-    if (preventFunction(geojson)) {
+    if (preventFunction(geojson, e, delta)) {
+      onPreventDragging();
       // prevent dragging polygon/line features
       // noop
     } else {
