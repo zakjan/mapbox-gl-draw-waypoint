@@ -2,7 +2,7 @@
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import * as Constants from '../constants.js';
 
-function patchDirectSelect(DirectSelect, preventFunction = () => true) {
+function patchDirectSelect(DirectSelect, preventFunction = () => true, onPreventDragging = () => undefined) {
   const DirectSelectPatched = { ...DirectSelect };
 
   DirectSelectPatched.clickInactive = function(state, e) {
@@ -21,7 +21,8 @@ function patchDirectSelect(DirectSelect, preventFunction = () => true) {
 
   DirectSelectPatched.dragFeature = function(state, e, delta) {
     const geojson = state.feature.toGeoJSON();
-    if (preventFunction(geojson)) {
+    if (preventFunction(geojson, e, delta)) {
+      onPreventDragging();
       // prevent dragging polygon/line features
       // noop
     } else {
@@ -35,7 +36,7 @@ function patchDirectSelect(DirectSelect, preventFunction = () => true) {
     const result = DirectSelect.onMouseMove.call(this, state, e);
 
     const geojson = state.feature.toGeoJSON();
-    if (preventFunction(geojson)) {
+    if (preventFunction(geojson, e, delta)) {
       // show pointer cursor on inactive features, move cursor on active feature vertices
       const isFeature = MapboxDraw.lib.CommonSelectors.isInactiveFeature(e);
       const onVertex = MapboxDraw.lib.CommonSelectors.isOfMetaType(Constants.meta.VERTEX)(e);

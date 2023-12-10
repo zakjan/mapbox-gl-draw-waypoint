@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2
+
+- update dependencies
+- added the event and delta arguments to the preventFunction method, as well as adding a onPreventDragging callback
+
 ## 1.2.1
 
 - update peerDependencies
