@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-draw-waypoint",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Waypoint plugin for Mapbox GL Draw",
   "keywords": [
     "mapbox-gl",

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+
+- remove the extra delta argument passed to preventFunction on onMouseMove
+
 ## 1.2.2
 
 - update dependencies
