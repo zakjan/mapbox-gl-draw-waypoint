@@ -36,7 +36,7 @@ function patchDirectSelect(DirectSelect, preventFunction = () => true, onPrevent
     const result = DirectSelect.onMouseMove.call(this, state, e);
 
     const geojson = state.feature.toGeoJSON();
-    if (preventFunction(geojson, e, delta)) {
+    if (preventFunction(geojson, e)) {
       // show pointer cursor on inactive features, move cursor on active feature vertices
       const isFeature = MapboxDraw.lib.CommonSelectors.isInactiveFeature(e);
       const onVertex = MapboxDraw.lib.CommonSelectors.isOfMetaType(Constants.meta.VERTEX)(e);
